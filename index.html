@@ -128,6 +128,11 @@ const q=document.getElementById(“s”).value.toLowerCase();
 render(q?data.filter(([,n])=>n.toLowerCase().includes(q)):data);
 }
 render(data);
+// fallback visibile se lista vuota
+setTimeout(()=>{
+const el=document.getElementById(“list”);
+if(!el.innerHTML.trim()) el.innerHTML=’<p style="color:red;padding:8px">Errore nel caricamento dati</p>’;
+},500);
 </script>
 
 </body>
