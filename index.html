@@ -4,156 +4,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Coppa Cadet 2026 – Classifica</title>
+<title>Coppa Cadet 2026</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:sans-serif;background:#f1f5f9;padding:10px;font-size:12px}
-h2{font-size:14px;color:#1e3a5f;margin-bottom:4px}
-.updated{font-size:11px;color:#94a3b8;margin-bottom:6px}
-.comment{background:#e0f2fe;border:1px solid #38bdf8;border-radius:8px;padding:8px;margin-bottom:8px;font-size:12px;color:#0369a1;line-height:1.4}
-.hl-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:6px;margin-bottom:8px}
+body{font-family:sans-serif;background:#f1f5f9;padding:10px;font-size:12px;margin:0}
+*{box-sizing:border-box}
+h2{font-size:14px;color:#1e3a5f;margin-bottom:2px}
+.sub{font-size:11px;color:#94a3b8;margin-bottom:6px}
+.comment{background:#e0f2fe;border:1px solid #38bdf8;border-radius:8px;padding:8px;margin-bottom:8px;font-size:12px;color:#0369a1}
+.hlbox{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:6px;margin-bottom:8px;font-size:12px}
 input{width:100%;padding:7px;border-radius:8px;border:1px solid #ccc;font-size:13px;margin-bottom:8px}
 .card{background:white;border-radius:10px;padding:8px}
-.row{margin-bottom:5px;padding:2px 4px;border-radius:6px}
-.row.hl{background:#fffbeb}
-.meta{display:flex;justify-content:space-between;margin-bottom:2px}
-.name{color:#334155}.name.top{color:#b45309;font-weight:700}.name.hl{font-weight:700}
-.score{font-weight:700;color:#1e3a5f}
-.bar-bg{background:#e2e8f0;border-radius:4px;height:7px}
-.bar{height:7px;border-radius:4px}
+.row{margin-bottom:6px;padding:3px 4px;border-radius:6px}
+.hl{background:#fffbeb}
+.meta{display:flex;justify-content:space-between;margin-bottom:3px}
+.nm{color:#334155;font-size:12px}
+.nm.gold{color:#b45309;font-weight:700}
+.nm.star{font-weight:700}
+.sc{font-weight:700;color:#1e3a5f;font-size:12px}
+.bg{background:#e2e8f0;border-radius:4px;height:6px}
+.bar{height:6px;border-radius:4px}
 </style>
 </head>
 <body>
 <h2>🏆 Finale 1 Coppa Cadet 2026</h2>
-<div class="updated">Aggiornato il 9 maggio 2026 · ore 15:57</div>
+<div class="sub">Aggiornato il 9 maggio 2026 · ore 15:57</div>
 <div class="comment">💬 Gara appena partita e già è un mare di parità! Quasi tutti a 200 punti — è come la partenza di una regata: tutti in fila, ma presto qualcuno scapperà via. Schiaffini è in acqua e pronta! ⛵</div>
-<div class="hl-box">⭐ <b>Schiaffini</b> — nel gruppo · 200 punti</div>
-<input id="s" placeholder="🔍 Cerca squadra..." oninput="filter()">
-<div class="card" id="list"></div>
+<div class="hlbox">⭐ <b>Schiaffini</b> — nel gruppo · 200 punti</div>
+<input id="s" placeholder="🔍 Cerca squadra..." oninput="go()">
+<div class="card" id="L"></div>
+
 <script>
-var raw=[
-["Durazzo",244],
-["Roncadelle",243],
-["Leopardi",242],
-["KappaCS",240],
-["Non calcolateci",237],
-["Tridentina",235],
-["Buonarroti",230],
-["I problematici",228],
-["MathAndCo",226],
-["Marconi",225],
-["I Sottozero",224],
-["I.C. SAN MAURO I",223],
-["I GERMANI CADET",222],
-["Pinguini Tattici Mercuriali Cadet",222],
-["Levi Unicorni",221],
-["Taliercio",220],
-["I PIAVEMATICI",220],
-["I QUADRATI PERFETTI",200],
-["Tre puntini",200],
-["MeucciMatici",200],
-["Albaro",200],
-["Barozzi",200],
-["Don Borghi",200],
-["I qui per caso",200],
-["Fiori",200],
-["Della Torre",200],
-["Marconi Modena",200],
-["Pertini26",200],
-["Hackangourou",200],
-["Passirano",200],
-["RAMONA",200],
-["Montini",200],
-["LE POTENZE CB",200],
-["I.C. Don Bosco",200],
-["Errore di Calcolo",200],
-["Pavoncelli",200],
-["Mateorici",200],
-["Di Vittorio - Padre Pio",200],
-["Manzoni",200],
-["Uccellis Udine",200],
-["Carpineti",200],
-["Hack Carpi",200],
-["Lanfranco",200],
-["GIANDUJOTTI",200],
-["SGB",200],
-["MateMatti",200],
-["I Geni a Tempo Perso",200],
-["Hack San Giovanni Lupatoto",200],
-["I.C. Manerbio",200],
-["Villafranca",200],
-["Ghedi",200],
-["IC Aosta",200],
-["Le potenze-Villasanta",200],
-["Schiaffini",200],
-["Beccianini- Cadet",200],
-["I Fontanacci",200],
-["GORLE",200],
-["Montanari",200],
-["San Martino di Lupari",200],
-["VIVAVIVALDI",200],
-["Guzzardi",200],
-["Newton - n - Rates",200],
-["Parazzi",200],
-["Ferrari",200],
-["Da Vinci",200],
-["Vivaldi",200],
-["Tricesimo",200],
-["TONOLINI 1",200],
-["Valussi Udine",190],
-["I 7 triangolini",190],
-["Betteloni",190],
-["Ruini",190]
+var D=[
+[1,"Durazzo",244],
+[2,"Roncadelle",243],
+[3,"Leopardi",242],
+[4,"KappaCS",240],
+[5,"Non calcolateci",237],
+[6,"Tridentina",235],
+[7,"Buonarroti",230],
+[8,"I problematici",228],
+[9,"MathAndCo",226],
+[10,"Marconi",225],
+[11,"I Sottozero",224],
+[12,"I.C. SAN MAURO I",223],
+[13,"I GERMANI CADET",222],
+[13,"Pinguini Tattici Mercuriali Cadet",222],
+[15,"Levi Unicorni",221],
+[16,"Taliercio",220],
+[16,"I PIAVEMATICI",220],
+[18,"I QUADRATI PERFETTI",200],
+[18,"Tre puntini",200],
+[18,"MeucciMatici",200],
+[18,"Albaro",200],
+[18,"Barozzi",200],
+[18,"Don Borghi",200],
+[18,"I qui per caso",200],
+[18,"Fiori",200],
+[18,"Della Torre",200],
+[18,"Marconi Modena",200],
+[18,"Pertini26",200],
+[18,"Hackangourou",200],
+[18,"Passirano",200],
+[18,"RAMONA",200],
+[18,"Montini",200],
+[18,"LE POTENZE CB",200],
+[18,"I.C. Don Bosco",200],
+[18,"Errore di Calcolo",200],
+[18,"Pavoncelli",200],
+[18,"Mateorici",200],
+[18,"Di Vittorio - Padre Pio",200],
+[18,"Manzoni",200],
+[18,"Uccellis Udine",200],
+[18,"Carpineti",200],
+[18,"Hack Carpi",200],
+[18,"Lanfranco",200],
+[18,"GIANDUJOTTI",200],
+[18,"SGB",200],
+[18,"MateMatti",200],
+[18,"I Geni a Tempo Perso",200],
+[18,"Hack San Giovanni Lupatoto",200],
+[18,"I.C. Manerbio",200],
+[18,"Villafranca",200],
+[18,"Ghedi",200],
+[18,"IC Aosta",200],
+[18,"Le potenze-Villasanta",200],
+[18,"Schiaffini",200],
+[18,"Beccianini- Cadet",200],
+[18,"I Fontanacci",200],
+[18,"GORLE",200],
+[18,"Montanari",200],
+[18,"San Martino di Lupari",200],
+[18,"VIVAVIVALDI",200],
+[18,"Guzzardi",200],
+[18,"Newton - n - Rates",200],
+[18,"Parazzi",200],
+[18,"Ferrari",200],
+[18,"Da Vinci",200],
+[18,"Vivaldi",200],
+[18,"Tricesimo",200],
+[18,"TONOLINI 1",200],
+[71,"Valussi Udine",190],
+[71,"I 7 triangolini",190],
+[71,"Betteloni",190],
+[71,"Ruini",190]
 ];
 
-var MAX=244;
+var M=244;
 
-// calcolo posizioni con ex aequo
-var data=[];
-var rank=1;
-for(var i=0;i<raw.length;i++){
-var r=(i>0 && raw[i][1]===raw[i-1][1])?data[i-1][0]:rank;
-data.push([r, raw[i][0], raw[i][1]]);
-rank++;
+function go(){
+  var q=document.getElementById("s").value.toLowerCase();
+  var rows=q?D.filter(function(x){return x[1].toLowerCase().indexOf(q)>=0;}):D;
+  var h="";
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i][0],n=rows[i][1],s=rows[i][2];
+    var hl=(n==="Schiaffini");
+    var pct=Math.round(s/M*100);
+    var col=hl?"#f59e0b":s>=230?"#1d4ed8":s>=200?"#3b82f6":"#93c5fd";
+    var medal=r==1?"🥇":r==2?"🥈":r==3?"🥉":r+".";
+    var nc="nm"+(r<=3?" gold":"")+(hl?" star":"");
+    h+='<div class="row'+(hl?" hl":"")+'"><div class="meta"><span class="'+nc+'">'+medal+' '+n+'</span><span class="sc">'+s+'</span></div><div class="bg"><div class="bar" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
+  }
+  document.getElementById("L").innerHTML=h;
 }
-
-function color(s,hl){
-if(hl) return “#f59e0b”;
-if(s>=230) return “#1d4ed8”;
-if(s>=200) return “#3b82f6”;
-return “#93c5fd”;
-}
-function medal(r){return r==1?“🥇”:r==2?“🥈”:r==3?“🥉”:r+”.”;}
-
-function render(rows){
-var html=””;
-for(var i=0;i<rows.length;i++){
-var r=rows[i][0], n=rows[i][1], s=rows[i][2];
-var hl=(n===“Schiaffini”);
-var pct=Math.round(s/MAX*100);
-var nameClass=“name”+(r<=3?” top”:””)+(hl?” hl”:””);
-html+=’<div class=“row’+(hl?” hl”:””)+’”>’;
-html+=’<div class="meta">’;
-html+=’<span class="'+nameClass+'">’+medal(r)+’ ‘+n+’</span>’;
-html+=’<span class="score">’+s+’</span>’;
-html+=’</div>’;
-html+=’<div class="bar-bg"><div class="bar" style="width:'+pct+'%;background:'+color(s,hl)+'"></div></div>’;
-html+=’</div>’;
-}
-document.getElementById(“list”).innerHTML=html;
-}
-
-function filter(){
-var q=document.getElementById(“s”).value.toLowerCase();
-if(!q){render(data);return;}
-var filtered=[];
-for(var i=0;i<data.length;i++){
-if(data[i][1].toLowerCase().indexOf(q)>=0) filtered.push(data[i]);
-}
-render(filtered);
-}
-
-render(data);
+go();
 </script>
 
 </body>
