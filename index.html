@@ -25,102 +25,113 @@ input{width:100%;padding:7px;border-radius:8px;border:1px solid #ccc;font-size:1
 <body>
 <h2>🏆 Finale 2 Coppa Benjamin · 75 squadre</h2>
 <div class="updated">Aggiornato il 9 maggio 2026 · ore 11:13</div>
-<div class="hl-box">⭐ <b>Schiaffini</b> — 22° posto · 716 punti 🔥</div>
+<div class="hl-box">⭐ <b>Schiaffini</b> — 23° posto · 716 punti 🔥</div>
 <input id="s" placeholder="🔍 Cerca squadra..." oninput="filter()">
 <div class="card" id="list"></div>
 <script>
-const data=[
-[1,"KappaCSB",1335],
-[2,"Leopardi-1",1195],
-[3,"Foscologici",959],
-[4,"i Resistenti",921],
-[5,"DIMESSE",900],
-[6,"NINEMATHS",897],
-[7,"I GERMANI BENJAMIN",895],
-[8,"Marconi",882],
-[9,"Caselle",877],
-[10,"Villafranca",875],
-[11,"Cavriago Math Team",869],
-[12,"San Mauro Math 1",866],
-[13,"I PIAVEMATICI",853],
-[14,"FocheMatematici",847],
-[14,"SettexSetti",847],
-[16,"Della Torre",825],
-[17,"I.C. 'Sandro PERTINI",809],
-[18,"Fibonacci Pisa",798],
-[19,"Corte Franca",758],
-[20,"I GAUSSIANI",751],
-[21,"Ranica",745],
-[22,"Ferraris",735],
-[23,"Schiaffini",716],
-[24,"Le calcolatrici",706],
-[25,"Montanari",701],
-[26,"Cangurini tattici",675],
-[27,"MeucciMatici",674],
-[28,"Betteloni",673],
-[29,"Hack Carpi",645],
-[30,"Monticelli",641],
-[31,"Mandelli - Rodari",636],
-[32,"Le 7 potenze",618],
-[33,"I Problematici",596],
-[34,"Strozzi",591],
-[34,"Fiori",591],
-[36,"Ghedi",588],
-[37,"Allegri",579],
-[38,"Newton Math",573],
-[38,"San Fruttuoso",573],
-[40,"Cittadella",559],
-[41,"Pinguini Tattici Mercuriali Benjamin",545],
-[42,"Don Borghi",543],
-[43,"I Fontanacci",532],
-[44,"Leopardi-2",518],
-[45,"Beccianini-Benjamin",502],
-[46,"Laparelli",500],
-[47,"DADAVENGERS",497],
-[48,"I NUMERI PRIMI",495],
-[49,"ANGOLI OTTUSI",480],
-[50,"KappaCSA",476],
-[51,"I COLOSSI",467],
-[52,"KangaMagni",466],
-[53,"Bertoni",439],
-[54,"Iseo",421],
-[55,"Hack San Giovanni Lupatoto",418],
-[56,"MEZZOCORONA",413],
-[57,"i calcolatori",403],
-[58,"Non calcolateci",389],
-[59,"Valussi Udine",363],
-[60,"Tricesimo",350],
-[61,"PERTINI",313],
-[62,"Lana Fermi",282],
-[62,"Taliercio",282],
-[64,"Remedello",242],
-[65,"Pavoncelli",240],
-[66,"I MATEMATICI",222],
-[67,"LUCARELLI BENEVENTO",177],
-[68,"I.C. Guzzardi",159],
-[69,"Malaguzzi",52]
+// Posizioni calcolate contando righe nell'immagine, dall'alto verso il basso
+// In caso di ex aequo si usa la stessa posizione e si salta la successiva
+const raw=[
+["KappaCSB",1335],
+["Leopardi-1",1195],
+["Foscologici",959],
+["i Resistenti",921],
+["DIMESSE",900],
+["NINEMATHS",897],
+["I GERMANI BENJAMIN",895],
+["Marconi",882],
+["Caselle",877],
+["Villafranca",875],
+["Cavriago Math Team",869],
+["San Mauro Math 1",866],
+["I PIAVEMATICI",853],
+["FocheMatematici",847],
+["SettexSetti",847],
+["Della Torre",825],
+["I.C. 'Sandro PERTINI",809],
+["Fibonacci Pisa",798],
+["Corte Franca",758],
+["I GAUSSIANI",751],
+["Ranica",745],
+["Ferraris",735],
+["Schiaffini",716],
+["Le calcolatrici",706],
+["Montanari",701],
+["Cangurini tattici",675],
+["MeucciMatici",674],
+["Betteloni",673],
+["Hack Carpi",645],
+["Monticelli",641],
+["Mandelli - Rodari",636],
+["Le 7 potenze",618],
+["I Problematici",596],
+["Strozzi",591],
+["Fiori",591],
+["Ghedi",588],
+["Allegri",579],
+["Newton Math",573],
+["San Fruttuoso",573],
+["Cittadella",559],
+["Pinguini Tattici Mercuriali Benjamin",545],
+["Don Borghi",543],
+["I Fontanacci",532],
+["Leopardi-2",518],
+["Beccianini-Benjamin",502],
+["Laparelli",500],
+["DADAVENGERS",497],
+["I NUMERI PRIMI",495],
+["ANGOLI OTTUSI",480],
+["KappaCSA",476],
+["I COLOSSI",467],
+["KangaMagni",466],
+["Bertoni",439],
+["Iseo",421],
+["Hack San Giovanni Lupatoto",418],
+["MEZZOCORONA",413],
+["i calcolatori",403],
+["Non calcolateci",389],
+["Valussi Udine",363],
+["Tricesimo",350],
+["PERTINI",313],
+["Lana Fermi",282],
+["Taliercio",282],
+["Remedello",242],
+["Pavoncelli",240],
+["I MATEMATICI",222],
+["LUCARELLI BENEVENTO",177],
+["I.C. Guzzardi",159],
+["Malaguzzi",52]
 ];
+
+// Calcolo posizioni con gestione ex aequo
+const data=[];
+let pos=1;
+for(let i=0;i<raw.length;i++){
+if(i>0 && raw[i][1]===raw[i-1][1]){
+// stesso punteggio: stessa posizione del precedente
+data.push([data[data.length-1][0], raw[i][0], raw[i][1]]);
+} else {
+data.push([pos, raw[i][0], raw[i][1]]);
+}
+pos++;
+}
+
 const MAX=1335;
-function color(s,hl){if(hl)return"#f59e0b";if(s>=700)return"#1d4ed8";if(s>=400)return"#3b82f6";return"#93c5fd";}
-function medal(r){return r==1?"🥇":r==2?"🥈":r==3?"🥉":r+".";}
+function color(s,hl){if(hl)return”#f59e0b”;if(s>=700)return”#1d4ed8”;if(s>=400)return”#3b82f6”;return”#93c5fd”;}
+function medal(r){return r==1?“🥇”:r==2?“🥈”:r==3?“🥉”:r+”.”;}
 function render(rows){
-  document.getElementById("list").innerHTML=rows.map(([r,n,s])=>{
-    const hl=n==="Schiaffini";
-    const pct=Math.round(s/MAX*100);
-    return`<div class="row${hl?" hl":""}">
-      <div class="meta">
-        <span class="name${r<=3?" top":""}${hl?" hl":""}">${medal(r)} ${n}</span>
-        <span class="score">${s}</span>
-      </div>
-      <div class="bar-bg"><div class="bar" style="width:${pct}%;background:${color(s,hl)}"></div></div>
-    </div>`;
-  }).join("");
+document.getElementById(“list”).innerHTML=rows.map(([r,n,s])=>{
+const hl=n===“Schiaffini”;
+const pct=Math.round(s/MAX*100);
+return`<div class="row${hl?" hl":""}"> <div class="meta"> <span class="name${r<=3?" top":""}${hl?" hl":""}">${medal(r)} ${n}</span> <span class="score">${s}</span> </div> <div class="bar-bg"><div class="bar" style="width:${pct}%;background:${color(s,hl)}"></div></div> </div>`;
+}).join(””);
 }
 function filter(){
-  const q=document.getElementById("s").value.toLowerCase();
-  render(q?data.filter(([,n])=>n.toLowerCase().includes(q)):data);
+const q=document.getElementById(“s”).value.toLowerCase();
+render(q?data.filter(([,n])=>n.toLowerCase().includes(q)):data);
 }
 render(data);
 </script>
+
 </body>
 </html>
