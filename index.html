@@ -11,6 +11,7 @@ body{font-family:sans-serif;background:#f1f5f9;padding:10px;font-size:12px}
 h2{font-size:14px;color:#1e3a5f;margin-bottom:4px}
 .updated{font-size:11px;color:#94a3b8;margin-bottom:8px}
 .hl-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:6px;margin-bottom:8px}
+.warning{background:#fee2e2;border:1px solid #ef4444;border-radius:8px;padding:6px;margin-bottom:8px;font-size:11px;color:#b91c1c}
 input{width:100%;padding:7px;border-radius:8px;border:1px solid #ccc;font-size:13px;margin-bottom:8px}
 .card{background:white;border-radius:10px;padding:8px}
 .row{margin-bottom:5px;padding:2px 4px;border-radius:6px}
@@ -24,28 +25,29 @@ input{width:100%;padding:7px;border-radius:8px;border:1px solid #ccc;font-size:1
 </head>
 <body>
 <h2>🏆 Finale 2 Coppa Benjamin · 75 squadre</h2>
-<div class="updated">Aggiornato il 9 maggio 2026 · ore 11:23</div>
+<div class="updated">Aggiornato il 9 maggio 2026 · ore 11:26</div>
 <div class="hl-box">⭐ <b>Schiaffini</b> — 24° posto · 706 punti</div>
+<div class="warning">⚠️ Attenzione: alle 11:26 la gara era in corso e i grafici erano nascosti — dati parziali</div>
 <input id="s" placeholder="🔍 Cerca squadra..." oninput="filter()">
 <div class="card" id="list"></div>
 <script>
 const raw=[
 ["KappaCSB",1335],
-["Leopardi-1",1212],
+["Leopardi-1",1267],
 ["Foscologici",971],
 ["i Resistenti",971],
+["NINEMATHS",957],
 ["I GERMANI BENJAMIN",947],
-["NINEMATHS",920],
+["I.C. 'Sandro PERTINI",919],
 ["Villafranca",892],
 ["DIMESSE",890],
 ["Caselle",889],
+["Della Torre",886],
 ["Marconi",882],
-["I.C. 'Sandro PERTINI",881],
+["I PIAVEMATICI",875],
 ["Cavriago Math Team",869],
-["Della Torre",854],
-["I PIAVEMATICI",853],
-["FocheMatematici",847],
-["SettexSetti",847],
+["FocheMatematici",837],
+["SettexSetti",837],
 ["San Mauro Math 1",836],
 ["Fibonacci Pisa",810],
 ["Corte Franca",799],
@@ -55,49 +57,49 @@ const raw=[
 ["Le calcolatrici",706],
 ["Schiaffini",706],
 ["Montanari",691],
-["Cangurini tattici",675],
 ["MeucciMatici",674],
-["Betteloni",673],
+["Cangurini tattici",665],
+["Betteloni",663],
 ["Hack Carpi",645],
-["Monticelli",641],
-["Mandelli - Rodari",636],
-["Le 7 potenze",608],
+["Le 7 potenze",630],
+["Mandelli - Rodari",626],
+["Monticelli",621],
 ["Ghedi",590],
 ["I Problematici",586],
 ["Fiori",581],
 ["Newton Math",573],
-["San Fruttuoso",573],
 ["Strozzi",571],
+["San Fruttuoso",563],
 ["Allegri",559],
-["DADAVENGERS",551],
+["DADAVENGERS",541],
 ["Cittadella",539],
 ["Don Borghi",533],
 ["I Fontanacci",532],
-["I COLOSSI",531],
 ["Pinguini Tattici Mercuriali Benjamin",525],
+["I COLOSSI",521],
+["I NUMERI PRIMI",512],
 ["Leopardi-2",508],
 ["Laparelli",500],
-["I NUMERI PRIMI",495],
+["KangaMagni",478],
 ["Beccianini-Benjamin",472],
 ["KappaCSA",466],
-["ANGOLI OTTUSI",460],
-["KangaMagni",446],
-["Bertoni",441],
+["ANGOLI OTTUSI",450],
 ["Iseo",433],
-["Non calcolateci",421],
+["Bertoni",431],
 ["Hack San Giovanni Lupatoto",408],
 ["MEZZOCORONA",393],
-["i calcolatori",373],
+["Non calcolateci",381],
+["i calcolatori",353],
 ["Valussi Udine",333],
-["PERTINI",303],
+["PERTINI",293],
 ["Tricesimo",290],
-["Taliercio",284],
-["Lana Fermi",262],
-["Remedello",232],
-["Pavoncelli",230],
-["I MATEMATICI",202],
-["LUCARELLI BENEVENTO",177],
-["I.C. Guzzardi",149],
+["Taliercio",274],
+["Remedello",264],
+["Lana Fermi",252],
+["Pavoncelli",220],
+["I MATEMATICI",192],
+["LUCARELLI BENEVENTO",157],
+["I.C. Guzzardi",139],
 ["Malaguzzi",0]
 ];
 
