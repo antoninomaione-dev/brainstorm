@@ -4,128 +4,124 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Coppa Cadet 2026 – Finale 2</title>
+<title>Coppa Cadet 2026 – Risultato Finale</title>
 <style>
-body{font-family:sans-serif;background:#f1f5f9;padding:10px;font-size:12px;margin:0}
-*{box-sizing:border-box}
-h2{font-size:14px;color:#1e3a5f;margin-bottom:2px}
-.sub{font-size:11px;color:#94a3b8;margin-bottom:6px}
-.comment{background:#e0f2fe;border:1px solid #38bdf8;border-radius:8px;padding:8px;margin-bottom:8px;font-size:12px;color:#0369a1}
-.warning{background:#fee2e2;border:1px solid #ef4444;border-radius:8px;padding:6px;margin-bottom:8px;font-size:11px;color:#b91c1c}
-.hlbox{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:6px;margin-bottom:8px;font-size:12px}
-input{width:100%;padding:7px;border-radius:8px;border:1px solid #ccc;font-size:13px;margin-bottom:8px}
-.card{background:white;border-radius:10px;padding:8px}
-.row{margin-bottom:6px;padding:3px 4px;border-radius:6px}
-.hl{background:#fffbeb}
-.meta{display:flex;justify-content:space-between;margin-bottom:3px}
-.nm{color:#334155;font-size:12px}
-.nm.gold{color:#b45309;font-weight:700}
-.nm.star{font-weight:700}
-.sc{font-weight:700;color:#1e3a5f;font-size:12px}
-.bg{background:#e2e8f0;border-radius:4px;height:6px}
-.bar{height:6px;border-radius:4px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:sans-serif;background:#f1f5f9;padding:16px;font-size:13px}
+h2{font-size:15px;color:#1e3a5f;margin-bottom:2px}
+.subtitle{font-size:11px;color:#94a3b8;margin-bottom:16px}
+.podio{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.card{border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.card.gold{background:linear-gradient(135deg,#fef9c3,#fde68a);border:1px solid #f59e0b}
+.card.silver{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border:1px solid #94a3b8}
+.card.bronze{background:linear-gradient(135deg,#fef3e2,#fde8c8);border:1px solid #d97706}
+.card.star{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid #f59e0b}
+.medal{font-size:28px;line-height:1}
+.info{flex:1}
+.team{font-weight:700;font-size:14px;color:#1e293b}
+.team.goldtxt{color:#b45309}
+.team.startxt{color:#92400e;font-size:15px}
+.pos{font-size:11px;color:#b45309;margin-bottom:2px}
+.dots{text-align:center;font-size:22px;color:#94a3b8;letter-spacing:6px;margin:4px 0 8px}
+.cheer{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #22c55e;border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#166534;line-height:1.5}
+.timeline{background:white;border-radius:12px;padding:12px 14px}
+.timeline h3{font-size:12px;color:#1e3a5f;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.trow{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px}
+.trow:last-child{margin-bottom:0}
+.ttime{font-size:10px;color:#94a3b8;width:42px;flex-shrink:0;padding-top:2px}
+.tbadge{font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;flex-shrink:0;white-space:nowrap}
+.tbadge.up{background:#dcfce7;color:#16a34a}
+.tbadge.down{background:#fee2e2;color:#dc2626}
+.tbadge.eq{background:#f1f5f9;color:#64748b}
+.tbadge.fire{background:#fef3c7;color:#d97706}
+.tdesc{font-size:11px;color:#334155;flex:1;line-height:1.4}
 </style>
 </head>
 <body>
+
 <h2>🏆 Finale 2 Coppa Cadet 2026</h2>
-<div class="sub">Aggiornato il 10 maggio 2026 · ore 11:24 · ⏱ 01:27:02 trascorsi</div>
-<div class="comment">💬 ULTIMI 3 MINUTI! Grafici nascosti, cuori a mille! Leopardi a 1032 vola verso la coppa. Schiaffini al 48° — qualunque cosa succeda in questi ultimi secondi, che battaglia ragazzi! 🏆❤️</div>
-<div class="warning">⚠️ Grafici nascosti dal sistema — dati parziali, aggiornamento finale in arrivo!</div>
-<div class="hlbox">⭐ <b>Schiaffini</b> — 48° posto · 512 punti</div>
-<input id="s" placeholder="🔍 Cerca squadra..." oninput="go()">
-<div class="card" id="L"></div>
-<script>
-var D=[
-[1,"Leopardi",1032],
-[2,"Valussi Udine",930],
-[3,"Betteloni",908],
-[4,"MeucciMatici",877],
-[5,"Uccellis Udine",867],
-[6,"RAMONA",858],
-[7,"Lanfranco",823],
-[8,"Le potenze-Villasanta",819],
-[8,"Non calcolateci",819],
-[10,"Montini",798],
-[11,"Villafranca",759],
-[12,"Mateorici",754],
-[13,"Tre puntini",746],
-[14,"KappaCS",742],
-[15,"I qui per caso",741],
-[16,"Buonarroti",735],
-[17,"Hackangourou",719],
-[18,"LE POTENZE CB",696],
-[19,"I problematici",695],
-[20,"Taliercio",691],
-[21,"Pinguini Tattici Mercuriali Cadet",685],
-[22,"Tridentina",679],
-[23,"Di Vittorio - Padre Pio",670],
-[24,"Hack Carpi",662],
-[25,"VIVAVIVALDI",661],
-[26,"San Martino di Lupari",656],
-[27,"Ruini",647],
-[28,"MathAndCo",635],
-[28,"GIANDUJOTTI",635],
-[30,"Della Torre",632],
-[31,"Marconi",630],
-[31,"Parazzi",630],
-[33,"I 7 triangolini",621],
-[34,"Vivaldi",610],
-[35,"I GERMANI CADET",597],
-[36,"MateMatti",591],
-[37,"Errore di Calcolo",585],
-[38,"Passirano",576],
-[39,"Tricesimo",575],
-[40,"Roncadelle",572],
-[41,"I.C. Manerbio",564],
-[42,"Ferrari",553],
-[43,"Manzoni",550],
-[44,"Albaro",544],
-[45,"Don Borghi",543],
-[45,"Hack San Giovanni Lupatoto",543],
-[47,"I PIAVEMATICI",538],
-[48,"Montanari",536],
-[49,"TONOLINI 1",535],
-[50,"Durazzo",523],
-[51,"Ghedi",515],
-[52,"Schiaffini",512],
-[53,"Levi Unicorni",502],
-[54,"Da Vinci",497],
-[55,"Barozzi",490],
-[56,"I QUADRATI PERFETTI",478],
-[57,"I Sottozero",460],
-[58,"IC Aosta",458],
-[59,"Carpineti",445],
-[60,"I.C. SAN MAURO I",439],
-[61,"Fiori",428],
-[62,"GORLE",413],
-[63,"I Fontanacci",390],
-[64,"I Geni a Tempo Perso",379],
-[65,"Pertini26",368],
-[66,"Beccianini- Cadet",361],
-[67,"I.C. Don Bosco",345],
-[67,"Pavoncelli",345],
-[69,"Newton - n - Rates",335],
-[70,"Marconi Modena",316],
-[71,"Guzzardi",269],
-[72,"SGB",111]
-];
-var M=1032;
-function go(){
-  var q=document.getElementById("s").value.toLowerCase();
-  var rows=q?D.filter(function(x){return x[1].toLowerCase().indexOf(q)>=0;}):D;
-  var h="";
-  for(var i=0;i<rows.length;i++){
-    var r=rows[i][0],n=rows[i][1],s=rows[i][2];
-    var hl=(n==="Schiaffini");
-    var pct=Math.round(s/M*100);
-    var col=hl?"#f59e0b":s>=750?"#1d4ed8":s>=550?"#3b82f6":"#93c5fd";
-    var medal=r==1?"🥇":r==2?"🥈":r==3?"🥉":r+".";
-    var nc="nm"+(r<=3?" gold":"")+(hl?" star":"");
-    h+='<div class="row'+(hl?" hl":"")+'"><div class="meta"><span class="'+nc+'">'+medal+' '+n+'</span><span class="sc">'+s+'</span></div><div class="bg"><div class="bar" style="width:'+pct+'%;background:'+col+'"></div></div></div>';
-  }
-  document.getElementById("L").innerHTML=h;
-}
-go();
-</script>
+<div class="subtitle">72 squadre · 10 maggio 2026 · Risultato finale</div>
+
+<div class="podio">
+  <div class="card gold">
+    <div class="medal">🥇</div>
+    <div class="info"><div class="team goldtxt">Leopardi</div></div>
+  </div>
+  <div class="card silver">
+    <div class="medal">🥈</div>
+    <div class="info"><div class="team">Valussi Udine</div></div>
+  </div>
+  <div class="card bronze">
+    <div class="medal">🥉</div>
+    <div class="info"><div class="team">Betteloni</div></div>
+  </div>
+</div>
+
+<div class="dots">· · ·</div>
+
+<div class="card star" style="margin-bottom:16px">
+  <div class="medal">⭐</div>
+  <div class="info">
+    <div class="pos">51° posto su 72 squadre</div>
+    <div class="team startxt">Schiaffini</div>
+    <div class="pos" style="margin-top:4px">Finale 2 completata · due gare, due battaglie! 🎉</div>
+  </div>
+</div>
+
+<div class="cheer">
+  💚 <b>Forza Schiaffini, sempre!</b><br><br>
+  Due finali, due gare toste, zero mollare. Avete sfidato 71 squadre da tutta Italia, tenuto duro sotto pressione e dato tutto fino all'ultimo calcolo — letteralmente. Il 51° posto non racconta le rimonte fulminee, i +50 punti in pochi minuti, i momenti in cui sembrava che la top 30 fosse a portata di mano.<br><br>
+  La matematica non mente: chi sa ragionare sotto pressione ha già vinto qualcosa di più importante di una coppa. Ci vediamo alla prossima sfida — e faremo sempre il tifo per voi! 🚀
+</div>
+
+<div class="timeline">
+  <h3>📖 Cronaca semiseria · Finale 2 · 90 minuti</h3>
+  <div class="trow">
+    <div class="ttime">00:01</div>
+    <div class="tbadge eq">Partenza</div>
+    <div class="tdesc">Punteggi ereditati a 2/3 + 200 — Leopardi parte in testa ma il gruppo è più compatto. Motori caldi! 🏁</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">00:12</div>
+    <div class="tbadge eq">39°</div>
+    <div class="tdesc">Schiaffini a 448 — già meglio della partenza di ieri. MeucciMatici soffia sul collo di Leopardi.</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">00:21</div>
+    <div class="tbadge up">↑ 36°</div>
+    <div class="tdesc">+44 punti in 2 minuti! La rimonta parte presto oggi — ben diverso da ieri. 🚀</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">00:23</div>
+    <div class="tbadge up">↑ 29°</div>
+    <div class="tdesc">MeucciMatici sorpassa Leopardi! Schiaffini vola al 29° — 7 posizioni in 2 minuti. Che accelerata! ⚡</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">00:37</div>
+    <div class="tbadge eq">32°</div>
+    <div class="tdesc">Leopardi riprende la vetta a 946. Schiaffini tiene il 32° — la classifica attorno è un ingorgo. 🚦</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">00:44</div>
+    <div class="tbadge eq">33°</div>
+    <div class="tdesc">Metà gara — 552 punti, +31 rispetto a prima. La top 25 sembra a portata di mano. ⚔️</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">01:13</div>
+    <div class="tbadge fire">🎯 1000!</div>
+    <div class="tdesc">LEOPARDI TOCCA I 1000 PUNTI! Valussi Udine esplode al 2°. Schiaffini al 43° — ogni risposta vale 5 posizioni! 🔥</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">01:24</div>
+    <div class="tbadge eq">46°</div>
+    <div class="tdesc">Ultimi 6 minuti — Leopardi a 1032 vola verso la coppa. Schiaffini tiene, cuori a mille! 🫀</div>
+  </div>
+  <div class="trow">
+    <div class="ttime">01:27</div>
+    <div class="tbadge down">Fine</div>
+    <div class="tdesc">Grafici nascosti, suspense totale. Risultato finale: 51° su 72. Bravi ragazzi — testa alta! 🎉</div>
+  </div>
+</div>
+
 </body>
 </html>
